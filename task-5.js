@@ -1,9 +1,9 @@
 
-// var taskObject = [{
-//     name       : null,
-//     completed  : false
-// }];
-    var taskManager = [];
+
+
+var taskManager = [];
+
+
 
 $(function () {
 
@@ -13,7 +13,6 @@ $(function () {
             complete : false
         };
         taskManager.push(task);
-        console.log(taskManager);
     }
 
     function deleteTask (index) {
@@ -25,12 +24,10 @@ $(function () {
 
         var indexLastTask = arr.length - 1;
         var taskObject = arr[indexLastTask].name;
-        
-        var taskComponent = '<li class="task_item" name="task_item" style="list-style : none;">' + 
+
+        var taskComponent = '<li class="task_item" name="task_item" style="list-style : none;" data-complete="false">' +
             '<span class="task_name">' + taskObject + '</span>' +
-            // '<span class="task_status">' +
                 '<input class="status_check" type="checkbox" name="status">' +
-            // '</span>' +
             '<span class="delete_task_holder">' +
                 '<a href="#" title="" class="delete_task">X</a>' +
            ' </span>' +
@@ -42,7 +39,7 @@ $(function () {
 
     $('.submit_task').on('click', function (e) {
         e.preventDefault();
-        console.log($('#add_task').val());
+
         if ($('#add_task').val() && !($('#add_task').val() == ' ')) {
             addTask($('#add_task').val());
             var component = drawTask(taskManager);
@@ -55,10 +52,6 @@ $(function () {
         }
 
     });
-
-    // function getName (classAttr, $this) {
-    //     return $this.siblings(className).text()
-    // }
 
     $('.task_wrapper').on('click', 'a.delete_task',  function (e) {
         e.preventDefault();
@@ -75,110 +68,99 @@ $(function () {
         deleteTask(ss);
         $('.task_item')[ss].remove();
 
-        console.log(ss);
 
     });
 
     $(document).on('change', '[type=checkbox]', function (e) {
+
         if($(this).is(':checked')){
             $(this).parents('.task_item').css({
                 backgroundColor : '#7ad3c3'
-            });
+            })
+            .attr('data-complete', 'true');
 
-            var tt = $(this).parent().siblings('.task_name').text();
-            $.each(taskManager, function (i, val) {
-                if (val.name == tt) {
-                    // val.complete = true;
-                    console.log(val[0].complete);
+            var taskName = $(this).siblings('.task_name').text();
+            taskManager.map( function (val, ind) {
+
+                if (taskName == val.name) {
+                    return val.complete = true;
+                    console.log(val.name);
                 }
             });
-            console.log(taskManager);
+
         } else {
-            
             $(this).parents('.task_item').css({
                 backgroundColor : '#af3b3a'
-            });
-
+            }).attr('data-complete', 'false');
         }
-    })
+    });
+
+    $(document).on('click', '#f_no_resolved', function (e) {
+
+        $('.task_item').each(function (ind) {
+            console.log(typeof $(this).attr('data-complete'));
+            if ($(this).attr('data-complete') == 'true') {
+                $(this).css({
+                    display : 'none'
+                });
+            }
+            else if ($(this).attr('data-complete') == 'false') {
+                $(this).css({
+                    display : 'block'
+                });
+            }
+        });
+    });
+
+    $(document).on('click', '#f_resolved', function (e) {
+
+        $('.task_item').each(function (ind) {
+            console.log(typeof $(this).attr('data-complete'));
+            if ($(this).attr('data-complete') == 'false') {
+                $(this).css({
+                    display : 'none'
+                });
+            }
+            else if ($(this).attr('data-complete') == 'true') {
+                $(this).css({
+                    display : 'block'
+                });
+            }
+        });
+    });
+
+
+    $(document).on('click', '#f_all', function (e) {
+
+        $('.task_item').each(function (ind) {
+            $(this).css({
+                display : 'block'
+            });
+        });
+    });
+
+    $(document).on('click', '#f_by_name', function (e) {
+
+        var result = window.prompt('Search by the name of the task');
+        console.log(result);
+
+        $('.task_item').each(function (ind) {
+
+            if ($(this).find('.task_name').text() == result) {
+                console.log('qq');
+                $(this).css({
+                    display : 'block'
+                });
+            } else {
+                $(this).css({
+                    display : 'none'
+                });
+            }
+        });
+    });
+
 });
 
-
-
-
-
-// (function(win) {
-
-
-//     win.mySingleton = (function() {
-
-//         var instance;
-
-//         function init() {
-
-//             function drawTable() {
-
-//                 var args = Array.prototype.slice.call(arguments);
-//                     tbl = document.createElement('table');
-
-//                     var tr = document.createElement('tr');
-//                 for(prop in args[0][0]) {
-//                     var th = document.createElement('th');
-//                     th.appendChild(document.createTextNode(prop));
-//                     tr.appendChild(th);
-//                 }
-//                 tbl.appendChild(tr);
-
-//                 args[0].forEach(function (el, index) {
-//                     var tr = document.createElement('tr');
-
-//                     Object.keys(el).forEach(function (key) {
-//                         var td = document.createElement('td');
-//                         td.appendChild(document.createTextNode(el[key]));
-//                         tr.appendChild(td);
-//                     });
-//                     tbl.appendChild(tr);
-//                 });
-
-//                 return tbl;
-
-//             };
-
-//             return {
-//                 draw: drawTable
-//             };
-
-//         };
-
-
-//         return {
-//             getInstance : function () {
-//                 if(!instance) {
-//                     instance = init();
-//                 }
-
-//                 return instance;
-//             }
-//         }
-        
-//     })();
-
-//     //Document Ready
-//     $(function() {
-//         var body = document.getElementsByTagName('body')[0];
-//         var app1 = mySingleton.getInstance();
-//         var app2 = mySingleton.getInstance();
-//         var tt1 = app1.draw(data);
-//         // var tt2 = app1.draw(data);
-//         // var tt3 = app1.draw(data);
-//         // var app1 = mySingleton.draw(data);
-//         // var app2 = mySingleton.draw(data);
-//         // console.log(app1 == app2);
-//         // console.log(app1 === app2); // Other case is false
-//         // body.appendChild(tt1);
-//     });
-
-// })(window);
 
 
 

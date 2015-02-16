@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="ex2.css">
 <style type="text/css" media="screen">
 
+body {
+	min-width: 800px;
+}
+
 h1 {
 	font-family: sans-serif;
 	color: #444;
@@ -20,6 +24,14 @@ li {
 	height: 40px;
 	line-height: 2.5;
 	margin-bottom: 2px;
+}
+
+.wrap-center {
+	position: relative;
+	width: 800px;
+	height: auto;
+	left: 50%;
+	margin-left: -400px;
 }
 
 .task_wrapper {
@@ -113,56 +125,51 @@ li {
 	text-decoration: none;
 }
 
+.filters_wrapper a:hover {
+	background: #888;
+}
+.filters_wrapper a:active {
+	background: #888;
+}
+
+
+
 
 </style>
 </head>
 <body>
 
-<div class="create_task_section">
-	<label for="add_task">
-	INSERT YOUR TASK
-	</label><br>
-	<input id="add_task" type="" name="" value="">
-	<a class="submit_task" href="" title="">CREATE</a>
-</div>
-<div class="filters_wrapper">
-	<a href="#" id="f_all">
-		ALL
-	</a>
-	<a href="#" id="f_resolved">
-		RESOLVED	
-	</a>
-	<a href="#" id="f_no_resolved">
-		NOT RESOLVED
-	</a>
-	<a href="#" id="f_by_name">
-		BY NAME
-	</a>
-</div>
+<div class="wrap-center">
+	<div class="create_task_section">
+		<label for="add_task">
+		INSERT YOUR TASK
+		</label><br>
+		<input id="add_task" type="" name="" value="">
+		<a class="submit_task" href="" title="">CREATE</a>
+	</div>
 
-<h1>Task Manager</h1>
+	<div class="filters_wrapper">
+		<a href="#" id="f_all">
+			ALL
+		</a>
+		<a href="#" id="f_resolved">
+			RESOLVED
+		</a>
+		<a href="#" id="f_no_resolved">
+			NOT RESOLVED
+		</a>
+		<a href="#" id="f_by_name">
+			BY NAME
+		</a>
+	</div>
 
-<hr>
+	<h1>Task Manager</h1>
 
-<div class="task_wrapper">
-	<ul class="task_list" style="list-style: none;">
-		<!-- <li class="task_item" name="task_item">
-			<span class="task_name">Get the Milk</span>
-			<input class="status_check" type="checkbox" name="status">
-			<span class="delete_task_holder">
-				<a href="#" title="" class="delete_task">X</a>
-			</span>
-		</li> -->
-		<!-- <li class="task_item" name="task_item"> -->
-		<!-- 	<span class="task_name">Get the Milk</span>
-			<span class="task_status">
-				<input type="checkbox" name="status">
-			</span>
-			<span class="delete_task_holder">
-				<a href="#" title="" class="delete_task">X</a>
-			</span>
-		</li> -->
-	</ul>
+	<hr>
+
+	<div class="task_wrapper">
+		<ul class="task_list" style="list-style: none;"></ul>
+	</div>
 </div>
 
 <script src="jquery.js"></script>
