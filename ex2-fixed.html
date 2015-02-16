@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exercise 2 Fixed</title>
+<link rel="stylesheet" href="ex2.css">
+<style type="text/css" media="screen">
+
+h1 {
+	font-family: sans-serif;
+	color: #444;
+}
+
+label {
+	font-weight: bold;
+	color: #fff;
+}
+
+li {
+	background: #af3b3a;
+	height: 40px;
+	line-height: 2.5;
+	margin-bottom: 2px;
+}
+
+.task_wrapper {
+	width: 500px;
+}
+
+#add_task {
+	border-radius: 4px;
+	margin-top: 10px;
+}
+
+.create_task_section {
+	font-family: sans-serif;
+	width: 200px;
+	background-color: #3ca3b4;
+	height: 105px;
+	padding-left: 20px;
+	border-radius: 3px;
+	padding-top: 20px;
+}
+
+
+
+.task_list {
+ 	list-style: none;
+ 	margin-left: -40px;
+}
+
+.task_item {
+	padding-left: 20px;
+	border-radius: 3px;
+}
+.delete_task {
+	height: 30px;
+	text-decoration: none;
+	color: #fff;
+	font-family: sans-serif;
+	font-weight: bold;
+	width: 30px;
+	/*background-color: #782854;*/
+	border: 2px solid #fff;
+	display: inline-block;
+	border-radius: 15px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 2.0em;
+	margin-top: -5px;
+}
+
+.task_name {
+	color: #fff;
+	text-transform: uppercase;
+	font-family: sans-serif;
+}
+
+.delete_task_holder {
+	float: right;
+	margin-right: 20px;
+}
+
+.submit_task {
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+	display: block;
+	width: 50%;
+	top: 14px;
+	position: relative;
+	border: 2px solid #fff;
+	border-radius: 3px;
+	padding: 3px;
+	text-align: center;
+}
+
+.filters_wrapper {
+	float: right;
+	background-color: #333;
+	height: 28px;
+	margin-top: -110px;
+	padding: 5px;
+	border-radius: 3px;
+}
+.filters_wrapper a {
+
+	color: #fff;
+	font-family: sans-serif;
+	display: inline-block;
+	border: 2px solid #fff;
+	border-radius: 2px;
+	padding: 3px;
+	text-decoration: none;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="create_task_section">
+	<label for="add_task">
+	INSERT YOUR TASK
+	</label><br>
+	<input id="add_task" type="" name="" value="">
+	<a class="submit_task" href="" title="">CREATE</a>
+</div>
+<div class="filters_wrapper">
+	<a href="#" id="f_all">
+		ALL
+	</a>
+	<a href="#" id="f_resolved">
+		RESOLVED	
+	</a>
+	<a href="#" id="f_no_resolved">
+		NOT RESOLVED
+	</a>
+	<a href="#" id="f_by_name">
+		BY NAME
+	</a>
+</div>
+
+<h1>Task Manager</h1>
+
+<hr>
+
+<div class="task_wrapper">
+	<ul class="task_list" style="list-style: none;">
+		<!-- <li class="task_item" name="task_item">
+			<span class="task_name">Get the Milk</span>
+			<input class="status_check" type="checkbox" name="status">
+			<span class="delete_task_holder">
+				<a href="#" title="" class="delete_task">X</a>
+			</span>
+		</li> -->
+		<!-- <li class="task_item" name="task_item"> -->
+		<!-- 	<span class="task_name">Get the Milk</span>
+			<span class="task_status">
+				<input type="checkbox" name="status">
+			</span>
+			<span class="delete_task_holder">
+				<a href="#" title="" class="delete_task">X</a>
+			</span>
+		</li> -->
+	</ul>
+</div>
+
+<script src="jquery.js"></script>
+<script src="task-5.js"></script>
+
+<script>
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
